@@ -6,6 +6,9 @@ variable "envtype" {}
 # VPC ID
 variable "vpc_id" {}
 
+# VPC CIDR Range
+variable "vpc_cidr" {}
+
 # Private Subnets IDs
 variable "private_subnet_ids" {
   type = "list"
