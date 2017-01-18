@@ -7,7 +7,12 @@ data "aws_ami" "windows" {
   }
 }
 
-# Rename Instance
-data "template_file" "rename_instance" {
-  template = "${file("${path.module}/include/rename_instance.ps1.tpl")}"
+# Primary Domain Controller
+data "template_file" "primary_domain_controller" {
+  template = "${file("${path.module}/include/primary_domain_controller.ps1.tpl")}"
+}
+
+# Secondary, Tertiary ... Domain Controllers
+data "template_file" "domain_controllers" {
+  template = "${file("${path.module}/include/domain_controllers.ps1.tpl")}"
 }

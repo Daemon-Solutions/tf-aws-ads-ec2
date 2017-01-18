@@ -9,7 +9,7 @@ Resources
 This module will create the following resources:
 
 - AD EC2 instance for each private subnet specified
-- Security Group
+- Security Group and associated ingress/egress rules
 
 Usage
 -----
