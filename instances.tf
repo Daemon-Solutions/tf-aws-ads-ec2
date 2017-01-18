@@ -13,9 +13,11 @@ resource "aws_instance" "domain_controller" {
       volume_size = "${var.instance_ebs_size}"
   }
   tags {
-    Name             = "AD-DC-${count.index + 1}"
+    Name             = "domain-controller-${count.index + 1}"
     Customer         = "${var.customer}"
     Environment      = "${var.envname}"
     EnvironmentType  = "${var.envtype}"
+    Service          = "Active Directory"
+    Role             = "Domain Controller"
   }
 }

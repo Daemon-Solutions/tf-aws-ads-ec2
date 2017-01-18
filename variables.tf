@@ -22,6 +22,24 @@ variable "private_subnet_count" {}
 variable "domain_name" {}
 variable "domain_password" {}
 
+# Domain Controller TCP Ports
+variable "domain_controller_tcp_ports" {
+  type    = "list"
+  default = ["53","88","135","139","389","445","464","636","3268","3269","5722","9389"]
+}
+
+# Domain Controller UDP Ports
+variable "domain_controller_udp_ports" {
+  type    = "list"
+  default = ["53","67","88","123","135","137","138","389","445","464"]
+}
+
+# Domain Controller Dynamic Port Range
+variable "domain_controller_dyn_ports" {
+  type    = "list"
+  default = ["49152","65535"]
+}
+
 # Instance Key Name
 variable "key_name" {}
 
