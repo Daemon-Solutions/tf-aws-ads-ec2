@@ -5,6 +5,7 @@ resource "aws_instance" "domain_controller" {
   instance_type          = "${var.instance_type}"
   key_name               = "${var.key_name}"
   subnet_id              = "${element(var.private_subnets, count.index )}"
+  iam_instance_profile   = "${module.iam_instance_profile_domain_controllers.profile_id}"
   vpc_security_group_ids = ["${aws_security_group.sg_common_ad.id}"]
   user_data              = "${count.index == 0 ? "<powershell>${data.template_file.primary_domain_controller.rendered}</powershell><persist>true</persist>" : "<powershell>${data.template_file.domain_controllers.rendered}</powershell><persist>true</persist>" }"
 
