@@ -10,11 +10,6 @@ variable "vpc_id" {}
 # VPC CIDR Range
 #variable "vpc_cidr" {}
 
-# Private Subnets IDs
-#variable "private_subnet_ids" {
-#  type = "list"
-#}
-
 variable "private_subnets" {
   type    = "list"
   default = []
@@ -88,4 +83,8 @@ variable "instance_ebs_type" {
 # Instance EBS Size
 variable "instance_ebs_size" {
   default = "100"
+}
+
+variable "timezone" {
+  default = "GMT Standard Time"
 }
