@@ -4,7 +4,7 @@
 # - Locale?
 
 Set-ExecutionPolicy RemoteSigned -Force
-
+tzutil /s "GMT Standard Time"
 # Disable Firewall
 Get-NetFirewallProfile | Set-NetFirewallProfile -Enabled False
 
