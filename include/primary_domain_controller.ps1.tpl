@@ -3,12 +3,7 @@
 # - Split this to add zone dynamically
 # - Locale?
 
-Set-ExecutionPolicy RemoteSigned -Force
-tzutil /s "GMT Standard Time"
-# Disable Firewall
-Get-NetFirewallProfile | Set-NetFirewallProfile -Enabled False
 
-net user administrator ${local_password}
 
 function SetStaticIP(){
 
@@ -105,7 +100,14 @@ else
 Write-SSMParameter -type String -Value "failed to verify first DC" -Name "domain-controller"}
 }
 
+Set-ExecutionPolicy RemoteSigned -Force
+#set timezone
+$timezone="${timezone}"
+tzutil /s "$timezone"
+# Disable Firewall
+Get-NetFirewallProfile | Set-NetFirewallProfile -Enabled False
 
+net user administrator ${local_password}
 
 SetStaticIP
 RenameComputer

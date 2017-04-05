@@ -75,7 +75,10 @@ function InstallADDC() {
 }
 
 Set-ExecutionPolicy RemoteSigned -Force
-tzutil /s "GMT Standard Time"
+#set timezone
+$timezone="${timezone}"
+tzutil /s "$timezone"
+
 # Disable Firewall
 Get-NetFirewallProfile | Set-NetFirewallProfile -Enabled False
 

@@ -21,13 +21,13 @@ data "template_file" "primary_domain_controller" {
     local_password = "${var.local_password}"
     domain_name    = "${var.domain_name}"
 
-    #domain_password                  = "${var.domain_password}"
     domain_mode                      = "${var.domain_mode}"
     forest_mode                      = "${var.forest_mode}"
     domain_netbios_name              = "${var.domain_netbios_name}"
     domain_safe_mode_admin_password  = "${var.domain_safe_mode_admin_password}"
     domain_enterprise_admin_account  = "${var.domain_enterprise_admin_account}"
     domain_enterprise_admin_password = "${var.domain_enterprise_admin_password}"
+    timezone                         = "${var.timezone}"
   }
 }
 
@@ -39,12 +39,12 @@ data "template_file" "domain_controllers" {
     local_password = "${var.local_password}"
     domain_name    = "${var.domain_name}"
 
-    #domain_password                  = "${var.domain_password}"
     domain_mode                      = "${var.domain_mode}"
     forest_mode                      = "${var.forest_mode}"
     domain_netbios_name              = "${var.domain_netbios_name}"
     domain_safe_mode_admin_password  = "${var.domain_safe_mode_admin_password}"
     domain_enterprise_admin_account  = "${var.domain_enterprise_admin_account}"
     domain_enterprise_admin_password = "${var.domain_enterprise_admin_password}"
+    timezone                         = "${var.timezone}"
   }
 }

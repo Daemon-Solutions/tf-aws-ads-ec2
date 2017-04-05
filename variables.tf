@@ -84,3 +84,7 @@ variable "instance_ebs_type" {
 variable "instance_ebs_size" {
   default = "100"
 }
+
+variable "timezone" {
+  default = "GMT Standard Time"
+}
