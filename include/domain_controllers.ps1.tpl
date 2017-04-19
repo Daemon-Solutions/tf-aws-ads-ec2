@@ -31,11 +31,11 @@ function RenameComputer() {
     # TODO: Split this to add zone dynamically
     $az=$azs.substring($azs.length -1,1)
             
-    if ( $az -eq "a") { $newname = "addc-eu-west-1" }
+    if ( $az -eq "a") { $newname = "${domain_controller_name}" + "001" }
 
-    if ( $az -eq "b") { $newname = "addc-eu-west-2" }
+    if ( $az -eq "b") { $newname = "${domain_controller_name}" + "002" }
 
-    if ( $az -eq "c") { $newname = "addc-eu-west-3" }
+    if ( $az -eq "c") { $newname = "${domain_controller_name}" + "003" }
 
     if ( ([string]::Compare($newName, $env:computerName, $True) -ne 0) ) {
 	    $rename = (Get-WmiObject -Class Win32_ComputerSystem).Rename($newName,"${local_password}",'Administrator').ReturnValue

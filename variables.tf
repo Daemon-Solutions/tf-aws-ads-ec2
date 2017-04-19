@@ -8,7 +8,7 @@ variable "envtype" {}
 variable "vpc_id" {}
 
 # VPC CIDR Range
-#variable "vpc_cidr" {}
+variable "vpc_cidr" {}
 
 variable "private_subnets" {
   type    = "list"
@@ -32,11 +32,12 @@ variable "domain_netbios_name" {}
 variable "domain_safe_mode_admin_password" {}
 variable "domain_enterprise_admin_account" {}
 variable "domain_enterprise_admin_password" {}
+variable "domain_controller_name" {}
 
 # Common AD DS TCP Ports
 variable "common_ad_tcp_ports" {
   type    = "list"
-  default = ["53", "88", "135", "139", "389", "445", "464", "636", "3268", "3269", "5722", "9389"]
+  default = ["53", "88", "135", "139", "389", "445", "464", "636", "3268", "3269"]
 }
 
 # Common AD DS UDP Ports
@@ -48,7 +49,7 @@ variable "common_ad_udp_ports" {
 # Common AD DS Dynamic Port Range
 variable "common_ad_dyn_ports" {
   type    = "list"
-  default = ["49152", "65535"]
+  default = ["1024", "65535"]
 }
 
 # Instance Key Name

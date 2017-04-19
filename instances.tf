@@ -15,8 +15,7 @@ resource "aws_instance" "domain_controller" {
   }
 
   tags {
-    # use format here
-    Name            = "domain-controller-${count.index + 1}"
+    Name            = "${var.domain_controller_name}00${count.index + 1}"
     Customer        = "${var.customer}"
     Environment     = "${var.envname}"
     EnvironmentType = "${var.envtype}"

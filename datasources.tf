@@ -27,6 +27,7 @@ data "template_file" "primary_domain_controller" {
     domain_safe_mode_admin_password  = "${var.domain_safe_mode_admin_password}"
     domain_enterprise_admin_account  = "${var.domain_enterprise_admin_account}"
     domain_enterprise_admin_password = "${var.domain_enterprise_admin_password}"
+    domain_controller_name           = "${var.domain_controller_name}"
     timezone                         = "${var.timezone}"
   }
 }
@@ -45,6 +46,7 @@ data "template_file" "domain_controllers" {
     domain_safe_mode_admin_password  = "${var.domain_safe_mode_admin_password}"
     domain_enterprise_admin_account  = "${var.domain_enterprise_admin_account}"
     domain_enterprise_admin_password = "${var.domain_enterprise_admin_password}"
+    domain_controller_name           = "${var.domain_controller_name}"
     timezone                         = "${var.timezone}"
   }
 }
