@@ -36,6 +36,7 @@ module "ads-ec2" {
   domain_safe_mode_admin_password  = "${var.domain_safe_mode_admin_password}"
   domain_enterprise_admin_account  = "${var.domain_enterprise_admin_account}"
   domain_enterprise_admin_password = "${var.domain_enterprise_admin_password}"
+  domain_controller_name   = "${var.domain_controller_name}"
 
   key_name                = "${var.key_name}"
 }
@@ -58,7 +59,7 @@ Variables
 - `domain_safe_mode_admin_password` -
 - `domain_enterprise_admin_account` -
 - `domain_enterprise_admin_password` -
-
+- `domain_controller_name` - the name of the domain controllers. Powershell will assign a number increment.
 - `key_name`             - AWS EC2 Key Pair
 
 Outputs
