@@ -95,11 +95,6 @@ Write-SSMParameter -type String -Value "failed to verify first DC" -Name "domain
 }
 
 Set-ExecutionPolicy RemoteSigned -Force
-#set timezone
-$timezone="${timezone}"
-tzutil /s "$timezone"
-# Disable Firewall
-Get-NetFirewallProfile | Set-NetFirewallProfile -Enabled False
 
 net user administrator ${local_password}
 

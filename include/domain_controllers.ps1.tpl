@@ -75,12 +75,6 @@ function InstallADDC() {
 }
 
 Set-ExecutionPolicy RemoteSigned -Force
-#set timezone
-$timezone="${timezone}"
-tzutil /s "$timezone"
-
-# Disable Firewall
-Get-NetFirewallProfile | Set-NetFirewallProfile -Enabled False
 
 net user administrator ${local_password}
 
