@@ -50,8 +50,8 @@ function RenameComputer() {
 function ConnectToDomain() {
 	$domain = (Get-WmiObject -Class Win32_ComputerSystem).Domain
 	$newDomain = "${domain_name}"
-	$ad_user = "${domain_enterprise_admin_account}"
-	$newDomainPassword ="${domain_enterprise_admin_password}"
+	$ad_user = '${domain_enterprise_admin_account}'
+	$newDomainPassword ='${domain_enterprise_admin_password}'
 	if ( ([string]::Compare($newDomain, $domain, $True) -ne 0) ) {
 	  $connect = (Get-WmiObject -Class Win32_ComputerSystem).JoinDomainOrWorkGroup($newDomain,$newDomainPassword,"$ad_user@$newDomain",$null,3).ReturnValue
 	  if ($connect -eq 0 ) {
@@ -63,10 +63,10 @@ function ConnectToDomain() {
 
 function InstallADDC() {
     #set values for domain creation
-    $domain_enterprise_admin_account  = "${domain_enterprise_admin_account}"
-    $domain_enterprise_admin_password = "${domain_enterprise_admin_password}"
+    $domain_enterprise_admin_account  = '${domain_enterprise_admin_account}'
+    $domain_enterprise_admin_password = '${domain_enterprise_admin_password}'
     $domain_name = "${domain_name}"
-    $domain_safe_mode_admin_password = "${domain_safe_mode_admin_password}"
+    $domain_safe_mode_admin_password = '${domain_safe_mode_admin_password}'
 
     $secpasswd = ConvertTo-SecureString $domain_enterprise_admin_password -AsPlainText -Force
     $mycreds = New-Object System.Management.Automation.PSCredential ("$domain_name\$domain_enterprise_admin_account", $secpasswd)
