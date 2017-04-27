@@ -55,21 +55,8 @@ variable "common_ad_dyn_ports" {
 # Instance Key Name
 variable "key_name" {}
 
-# AWS Microsoft Windows AMIs
-variable "windows_ami_names" {
-  type = "map"
-
-  default = {
-    "2008" = "Windows_Server-2008-R2_SP1-English-64Bit-Base*"
-    "2012" = "Windows_Server-2012-R2_RTM-English-64Bit-Base*"
-    "2016" = "Windows_Server-2016-English-Full-Base-*"
-  }
-}
-
-# Microsoft Windows Version
-variable "windows_ver" {
-  default = "2012"
-}
+# Microsoft Windows Base AMI ID
+variable "windows_base_ami_id" {}
 
 # Instance Type
 variable "instance_type" {

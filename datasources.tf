@@ -1,15 +1,8 @@
-# Get latest Microsoft Windows AMI
+# Microsoft Windows Base AMI
 data "aws_ami" "windows" {
-  most_recent = true
-
   filter {
-    name   = "name"
-    values = ["${lookup(var.windows_ami_names,var.windows_ver)}"]
-  }
-
-  filter {
-    name   = "owner-alias"
-    values = ["amazon"]
+    name   = "image-id"
+    values = ["${var.windows_base_ami_id}"]
   }
 }
 
