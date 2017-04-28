@@ -37,7 +37,7 @@ function InstallADDS() {
     #set values for domain creation
 
     $domain_name = "${domain_name}"
-    $domain_safe_mode_admin_password = "${domain_safe_mode_admin_password}"
+    $domain_safe_mode_admin_password = '${domain_safe_mode_admin_password}'
     $domain_mode = "${domain_mode}"
     $domain_netbios_name = "${domain_netbios_name}"
     $forest_mode = "${forest_mode}"
@@ -66,8 +66,8 @@ function InstallADDS() {
 
 function CreateADUser() {
 
-    $domain_enterprise_admin_account  = "${domain_enterprise_admin_account}"
-    $domain_enterprise_admin_password = "${domain_enterprise_admin_password}"
+    $domain_enterprise_admin_account  = '${domain_enterprise_admin_account}'
+    $domain_enterprise_admin_password = '${domain_enterprise_admin_password}'
     
     $Secure_String_Pwd = ConvertTo-SecureString $domain_enterprise_admin_password -AsPlainText -Force
     $Groups = @('domain admins','schema admins','enterprise admins')
