@@ -1,4 +1,4 @@
-
+Import-Module NetAdapter
 
 Function CheckDomainReadiness{
 do{
@@ -62,23 +62,30 @@ function ConnectToDomain() {
 }
 
 function InstallADDC() {
-    #set values for domain creation
-    $domain_enterprise_admin_account  = '${domain_enterprise_admin_account}'
-    $domain_enterprise_admin_password = '${domain_enterprise_admin_password}'
-    $domain_name = "${domain_name}"
-    $domain_safe_mode_admin_password = '${domain_safe_mode_admin_password}'
+    
+    $computer=Get-WMIObject win32_computersystem
+  
+    If ( -NOT ($computer.domainrole -eq 4 -OR $computer.domainrole -eq 5)) {
 
-    $secpasswd = ConvertTo-SecureString $domain_enterprise_admin_password -AsPlainText -Force
-    $mycreds = New-Object System.Management.Automation.PSCredential ("$domain_name\$domain_enterprise_admin_account", $secpasswd)
-    $Secure_String_Pwd = ConvertTo-SecureString $domain_safe_mode_admin_password -AsPlainText -Force
-    Install-ADDSDomainController -DomainName $domain_name -InstallDns -SafeModeAdministratorPassword $Secure_String_Pwd -credential $mycreds -force
+        # Prerequisites 
+        Install-WindowsFeature AD-Domain-Services, rsat-adds -IncludeAllSubFeature
+        Import-Module ADDSDeployment 
+
+        #set values for domain creation
+        $domain_enterprise_admin_account  = '${domain_enterprise_admin_account}'
+        $domain_enterprise_admin_password = '${domain_enterprise_admin_password}'
+        $domain_name = "${domain_name}"
+        $domain_safe_mode_admin_password = '${domain_safe_mode_admin_password}'
+
+        $secpasswd = ConvertTo-SecureString $domain_enterprise_admin_password -AsPlainText -Force
+        $mycreds = New-Object System.Management.Automation.PSCredential ("$domain_name\$domain_enterprise_admin_account", $secpasswd)
+        $Secure_String_Pwd = ConvertTo-SecureString $domain_safe_mode_admin_password -AsPlainText -Force
+        Install-ADDSDomainController -DomainName $domain_name -InstallDns -SafeModeAdministratorPassword $Secure_String_Pwd -credential $mycreds -force
+    }
+
 }
 
-Set-ExecutionPolicy RemoteSigned -Force
-
 net user administrator ${local_password}
-
-Install-WindowsFeature AD-Domain-Services, rsat-adds -IncludeAllSubFeature
  
 SetStaticIP
 
@@ -88,7 +95,6 @@ $dc_dns=CheckDomainReadiness
 
 Start-Sleep -s 120
 
-Import-Module NetAdapter
 $alias = (Get-NetAdapter).Name
 Set-DnsClientServerAddress -InterfaceAlias $alias -ServerAddress $dc_dns
 
