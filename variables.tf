@@ -4,11 +4,12 @@ variable "customer" {}
 variable "envname" {}
 variable "envtype" {}
 
-# VPC ID
+# VPC
 variable "vpc_id" {}
 
-# VPC CIDR Range
-variable "vpc_cidr" {}
+variable "cidr_blocks" {
+  type = "list"
+}
 
 variable "private_subnets" {
   type    = "list"

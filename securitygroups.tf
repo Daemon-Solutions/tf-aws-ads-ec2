@@ -20,7 +20,7 @@ resource "aws_security_group_rule" "ir_common_ad_tcp" {
   to_port           = "${element(var.common_ad_tcp_ports, count.index)}"
   protocol          = "TCP"
   security_group_id = "${aws_security_group.sg_common_ad.id}"
-  cidr_blocks       = ["${var.vpc_cidr}"]
+  cidr_blocks       = ["${var.cidr_blocks}"]
 }
 
 resource "aws_security_group_rule" "ir_common_ad_udp" {
@@ -30,7 +30,7 @@ resource "aws_security_group_rule" "ir_common_ad_udp" {
   to_port           = "${element(var.common_ad_udp_ports, count.index)}"
   protocol          = "UDP"
   security_group_id = "${aws_security_group.sg_common_ad.id}"
-  cidr_blocks       = ["${var.vpc_cidr}"]
+  cidr_blocks       = ["${var.cidr_blocks}"]
 }
 
 resource "aws_security_group_rule" "ir_common_ad_tcp_dyn" {
@@ -39,7 +39,7 @@ resource "aws_security_group_rule" "ir_common_ad_tcp_dyn" {
   to_port           = "${element(var.common_ad_dyn_ports, 1 )}"
   protocol          = "TCP"
   security_group_id = "${aws_security_group.sg_common_ad.id}"
-  cidr_blocks       = ["${var.vpc_cidr}"]
+  cidr_blocks       = ["${var.cidr_blocks}"]
 }
 
 resource "aws_security_group_rule" "ir_common_ad_udp_dyn" {
@@ -48,7 +48,7 @@ resource "aws_security_group_rule" "ir_common_ad_udp_dyn" {
   to_port           = "${element(var.common_ad_dyn_ports, 1 )}"
   protocol          = "UDP"
   security_group_id = "${aws_security_group.sg_common_ad.id}"
-  cidr_blocks       = ["${var.vpc_cidr}"]
+  cidr_blocks       = ["${var.cidr_blocks}"]
 }
 
 resource "aws_security_group_rule" "ir_common_ad_all_all" {
