@@ -24,6 +24,8 @@ module "ads-ec2" {
   envname                 = "${var.envname}"
   envtype                 = "${var.envtype}"
   vpc_id                  = "${module.vpc.vpc_id}"
+  
+  cidr_blocks             = "{var.cidr_blocks}"
 
   local_password          = "${var.local_password}"
 
@@ -49,6 +51,7 @@ Variables
 - `envname`              - environment name
 - `envtype`              - environment type
 - `vpc_id`               - the ID of the VPC in which the AD EC2 instances are created
+- `cidr_blocks`          - the CIDR block ranges used by the AD Controller Security Group rules
 - `private_subnets`      - the private subnets where the AD EC2 instances will reside
 - `private_subnet_count` - the number of private subnets created within VPC.  * Variable currently exists whilst cycle error is determined when interpolation is performed against the variable `private_subnets`  *
 
