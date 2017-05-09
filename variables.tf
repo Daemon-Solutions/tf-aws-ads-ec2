@@ -7,9 +7,6 @@ variable "envtype" {}
 # VPC ID
 variable "vpc_id" {}
 
-# VPC CIDR Range
-variable "vpc_cidr" {}
-
 variable "private_subnets" {
   type    = "list"
   default = []
