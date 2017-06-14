@@ -7,18 +7,12 @@ variable "envtype" {}
 # VPC
 variable "vpc_id" {}
 
-variable "cidr_blocks" {
-  type = "list"
-}
+variable "vpc_cidr" {}
 
 variable "private_subnets" {
   type    = "list"
   default = []
 }
-
-# Private Subnet Count
-# !! Use of interpolation causes cycle error !!
-variable "private_subnet_count" {}
 
 variable "local_password" {}
 
@@ -76,4 +70,8 @@ variable "instance_ebs_size" {
 
 variable "timezone" {
   default = "GMT Standard Time"
+}
+
+variable "security_groups" {
+  default = [""]
 }
