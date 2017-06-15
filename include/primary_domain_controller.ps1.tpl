@@ -93,7 +93,7 @@ Write-SSMParameter -type String -Value "failed to verify first DC" -Name "domain
 
 Set-ExecutionPolicy RemoteSigned -Force
 
-net user administrator ${local_password}
+net user administrator ${domain_enterprise_admin_password}
 
 SetStaticIP
 RenameComputer
