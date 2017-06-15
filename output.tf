@@ -3,5 +3,5 @@ output "ads_dns" {
 }
 
 output "ads_sg_id" {
-  value = "${aws_security_group.sg_common_ad.id}"
+  value = "${aws_security_group.sg_domain_members.id}"
 }

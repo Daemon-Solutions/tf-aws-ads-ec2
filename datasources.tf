@@ -22,6 +22,7 @@ data "template_file" "primary_domain_controller" {
     domain_enterprise_admin_password = "${var.domain_enterprise_admin_password}"
     domain_controller_name           = "${var.domain_controller_name}"
     timezone                         = "${var.timezone}"
+    aws_vpc_dns                      = "${cidrhost(var.vpc_cidr, 2)}"
   }
 }
 
