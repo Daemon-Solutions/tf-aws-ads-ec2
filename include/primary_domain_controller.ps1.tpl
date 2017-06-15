@@ -23,7 +23,7 @@ function RenameComputer() {
     if ( $az -eq "c") { $newname = "${domain_controller_name}" + "3" }
 
     if ( ([string]::Compare($newName, $env:computerName, $True) -ne 0) ) {
-	    $rename = (Get-WmiObject -Class Win32_ComputerSystem).Rename($newName,"${local_password}",'Administrator').ReturnValue
+	    $rename = (Get-WmiObject -Class Win32_ComputerSystem).Rename($newName,"${domain_enterprise_admin_password}",'Administrator').ReturnValue
         if ($rename -eq 0) {
             Restart-Computer
             Start-Sleep -s 30
@@ -93,7 +93,7 @@ Write-SSMParameter -type String -Value "failed to verify first DC" -Name "domain
 
 Set-ExecutionPolicy RemoteSigned -Force
 
-net user administrator ${local_password}
+net user administrator ${domain_enterprise_admin_password}
 
 SetStaticIP
 RenameComputer
