@@ -36,6 +36,7 @@ module "ads-ec2" {
   security_groups                  = ["${aws_security_group.mgmt_internal.id}"]
   key_name                         = "${var.key_name}"
   windows_base_ami_id              = "${var.windows_base_ami_id}"
+  dc_count                         = "3"
 }
 ```
 
@@ -58,6 +59,7 @@ Variables
 - `domain_enterprise_admin_password` -
 - `domain_controller_name` - the name of the domain controllers. Powershell will assign a number increment.
 - `key_name`             - AWS EC2 Key Pair
+- `dc_count`             - The amount of DCs you wish to provision
 
 Outputs
 -------

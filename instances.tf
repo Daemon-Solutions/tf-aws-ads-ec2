@@ -1,6 +1,6 @@
 # Domain Controller Instances
 resource "aws_instance" "domain_controller" {
-  count                  = "${length(var.private_subnets)}"
+  count                  = "${var.dc_count}"
   ami                    = "${data.aws_ami.windows.id}"
   instance_type          = "${var.instance_type}"
   key_name               = "${var.key_name}"

@@ -9,4 +9,3 @@ output "ads_sg_id" {
 output "domain_controllers_sg_id" {
   value = "${aws_security_group.sg_domain_controllers.id}"
 }
-

@@ -75,3 +75,5 @@ variable "timezone" {
 variable "security_groups" {
   default = [""]
 }
+
+variable "dc_count" {}
