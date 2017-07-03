@@ -77,3 +77,7 @@ variable "security_groups" {
 }
 
 variable "dc_count" {}
+
+variable "disable_api_termination" {
+  default = true
+}
