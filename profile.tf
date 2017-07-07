@@ -1,7 +1,7 @@
 module "iam_instance_profile_domain_controllers" {
   source = "../tf-aws-iam-instance-profile"
 
-  name                  = "${var.customer}-domain-controllers"
+  name                  = "${var.customer}-${var.envname}-${var.envtype}-domain-controllers"
   ec2_describe          = "1"
   ec2_attach            = "1"
   s3_readonly           = "1"
