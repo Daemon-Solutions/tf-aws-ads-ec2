@@ -15,6 +15,10 @@ resource "aws_instance" "domain_controller" {
     volume_size = "${var.instance_ebs_size}"
   }
 
+  lifecycle {
+    ignore_changes = ["user_data"]
+  }
+
   tags {
     Name            = "${var.domain_controller_name}${count.index + 1}"
     Customer        = "${var.customer}"
