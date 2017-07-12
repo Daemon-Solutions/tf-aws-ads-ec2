@@ -81,3 +81,7 @@ variable "dc_count" {}
 variable "disable_api_termination" {
   default = true
 }
+
+variable "domain_controller_ips" {
+  type = "list"
+}

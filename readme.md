@@ -37,6 +37,7 @@ module "ads-ec2" {
   key_name                         = "${var.key_name}"
   windows_base_ami_id              = "${var.windows_base_ami_id}"
   dc_count                         = "3"
+  domain_controller_ips            = ["${var.domain_controller_ips}"]
 }
 ```
 
@@ -60,6 +61,8 @@ Variables
 - `domain_controller_name` - the name of the domain controllers. Powershell will assign a number increment.
 - `key_name`             - AWS EC2 Key Pair
 - `dc_count`             - The amount of DCs you wish to provision
+- `domain_controller_ips`- List of predefined ips for ec2 domain controllers
+  
 
 Outputs
 -------
