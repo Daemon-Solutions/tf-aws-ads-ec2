@@ -65,51 +65,13 @@ resource "aws_security_group_rule" "ir_domain_controllers_all_all" {
 }
 
 # Egress Rules
-resource "aws_security_group_rule" "er_domain_controllers_tcp" {
-  count             = "${length(var.common_ad_tcp_ports)}"
+resource "aws_security_group_rule" "er_domain_controllers_all" {
   type              = "egress"
-  from_port         = "${element(var.common_ad_tcp_ports, count.index)}"
-  to_port           = "${element(var.common_ad_tcp_ports, count.index)}"
-  protocol          = "TCP"
-  security_group_id = "${aws_security_group.sg_domain_controllers.id}"
-  cidr_blocks       = ["0.0.0.0/0"]
-}
-
-resource "aws_security_group_rule" "er_domain_controllers_udp" {
-  count             = "${length(var.common_ad_udp_ports)}"
-  type              = "egress"
-  from_port         = "${element(var.common_ad_udp_ports, count.index)}"
-  to_port           = "${element(var.common_ad_udp_ports, count.index)}"
-  protocol          = "UDP"
-  security_group_id = "${aws_security_group.sg_domain_controllers.id}"
-  cidr_blocks       = ["0.0.0.0/0"]
-}
-
-resource "aws_security_group_rule" "er_domain_controllers_tcp_dyn" {
-  type              = "egress"
-  from_port         = "${element(var.common_ad_dyn_ports, 0 )}"
-  to_port           = "${element(var.common_ad_dyn_ports, 1 )}"
-  protocol          = "TCP"
-  security_group_id = "${aws_security_group.sg_domain_controllers.id}"
-  cidr_blocks       = ["0.0.0.0/0"]
-}
-
-resource "aws_security_group_rule" "er_domain_controllers_udp_dyn" {
-  type              = "egress"
-  from_port         = "${element(var.common_ad_dyn_ports, 0 )}"
-  to_port           = "${element(var.common_ad_dyn_ports, 1 )}"
-  protocol          = "UDP"
-  security_group_id = "${aws_security_group.sg_domain_controllers.id}"
-  cidr_blocks       = ["0.0.0.0/0"]
-}
-
-resource "aws_security_group_rule" "er_domain_controllers_all_all" {
-  type              = "egress"
-  from_port         = "0"
-  to_port           = "65535"
+  from_port         = 0
+  to_port           = 0
   protocol          = "-1"
   security_group_id = "${aws_security_group.sg_domain_controllers.id}"
-  self              = true
+  cidr_blocks       = ["0.0.0.0/0"]
 }
 
 ## Domain Member Instances
@@ -169,41 +131,11 @@ resource "aws_security_group_rule" "ir_domain_members_udp_dyn" {
 }
 
 # Egress Rules
-
-resource "aws_security_group_rule" "er_domain_members_tcp" {
-  count                    = "${length(var.common_ad_tcp_ports)}"
-  type                     = "egress"
-  from_port                = "${element(var.common_ad_tcp_ports, count.index)}"
-  to_port                  = "${element(var.common_ad_tcp_ports, count.index)}"
-  protocol                 = "TCP"
-  security_group_id        = "${aws_security_group.sg_domain_members.id}"
-  source_security_group_id = "${aws_security_group.sg_domain_controllers.id}"
-}
-
-resource "aws_security_group_rule" "er_domain_members_udp" {
-  count                    = "${length(var.common_ad_udp_ports)}"
-  type                     = "egress"
-  from_port                = "${element(var.common_ad_udp_ports, count.index)}"
-  to_port                  = "${element(var.common_ad_udp_ports, count.index)}"
-  protocol                 = "UDP"
-  security_group_id        = "${aws_security_group.sg_domain_members.id}"
-  source_security_group_id = "${aws_security_group.sg_domain_controllers.id}"
-}
-
-resource "aws_security_group_rule" "er_domain_members_tcp_dyn" {
-  type                     = "egress"
-  from_port                = "${element(var.common_ad_dyn_ports, 0 )}"
-  to_port                  = "${element(var.common_ad_dyn_ports, 1 )}"
-  protocol                 = "TCP"
-  security_group_id        = "${aws_security_group.sg_domain_members.id}"
-  source_security_group_id = "${aws_security_group.sg_domain_controllers.id}"
-}
-
-resource "aws_security_group_rule" "er_domain_members_udp_dyn" {
-  type                     = "egress"
-  from_port                = "${element(var.common_ad_dyn_ports, 0 )}"
-  to_port                  = "${element(var.common_ad_dyn_ports, 1 )}"
-  protocol                 = "UDP"
-  security_group_id        = "${aws_security_group.sg_domain_members.id}"
-  source_security_group_id = "${aws_security_group.sg_domain_controllers.id}"
+resource "aws_security_group_rule" "er_domain_members_all" {
+  type              = "egress"
+  from_port         = 0
+  to_port           = 0
+  protocol          = "-1"
+  security_group_id = "${aws_security_group.sg_domain_members.id}"
+  cidr_blocks       = ["0.0.0.0/0"]
 }
