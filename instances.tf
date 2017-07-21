@@ -26,5 +26,6 @@ resource "aws_instance" "domain_controller" {
     EnvironmentType = "${var.envtype}"
     Service         = "Active Directory"
     Role            = "Domain Controller"
+    "Patch Group"   = "${var.patch_group}"
   }
 }
