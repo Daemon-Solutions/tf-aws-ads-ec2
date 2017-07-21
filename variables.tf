@@ -81,3 +81,7 @@ variable "dc_count" {}
 variable "disable_api_termination" {
   default = true
 }
+
+variable "patch_group" {
+  default = "static"
+}
