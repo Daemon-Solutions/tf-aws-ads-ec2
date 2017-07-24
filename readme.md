@@ -16,11 +16,12 @@ Usage
 
 ```js
 module "ads-ec2" {
-  source = "../localmodules/tf-aws-ads-ec2"
+  source = "../modules/tf-aws-ads-ec2"
 
   customer                         = "${var.customer}"
   envname                          = "${var.envname}"
   envtype                          = "${var.envtype}"
+  azs                              = "${var.azs}"
   vpc_id                           = "${module.vpc.vpc_id}"
   vpc_cidr                         = "${var.vpc_cidr}"
   local_password                   = "${var.local_password}"
@@ -36,7 +37,6 @@ module "ads-ec2" {
   security_groups                  = ["${aws_security_group.mgmt_internal.id}"]
   key_name                         = "${var.key_name}"
   windows_base_ami_id              = "${var.windows_base_ami_id}"
-  dc_count                         = "3"
 }
 ```
 
@@ -46,6 +46,7 @@ Variables
 - `customer`             - customer name to identify resources
 - `envname`              - environment name
 - `envtype`              - environment type
+- `azs`                  - the Availability Zones which dictate the number of AD EC2 instances to create and in which AZ
 - `vpc_id`               - the ID of the VPC in which the AD EC2 instances are created
 - `vpc_cidr`             - the CIDR block ranges used by the AD Controller Security Group rules
 - `local_password`       - password for the local administrator account
