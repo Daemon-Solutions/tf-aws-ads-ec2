@@ -5,11 +5,21 @@ variable "envname" {}
 variable "envtype" {}
 
 # VPC
+
+variable "azs" {
+  type = "list"
+}
+
 variable "vpc_id" {}
 
 variable "vpc_cidr" {}
 
 variable "private_subnets" {
+  type    = "list"
+  default = []
+}
+
+variable "private_subnet_cidrs" {
   type    = "list"
   default = []
 }
@@ -76,7 +86,7 @@ variable "security_groups" {
   default = [""]
 }
 
-variable "dc_count" {}
+#variable "dc_count" {}
 
 variable "disable_api_termination" {
   default = true
