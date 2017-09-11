@@ -16,7 +16,7 @@ resource "aws_instance" "domain_controller" {
   }
 
   lifecycle {
-    ignore_changes = ["user_data"]
+    ignore_changes = ["${var.lifecycle}"]
   }
 
   tags {

@@ -85,3 +85,8 @@ variable "disable_api_termination" {
 variable "patch_group" {
   default = "static"
 }
+
+variable "lifecycle" {
+  default = [""]
+  type    = "list"
+}
